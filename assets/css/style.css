@@ -3531,7 +3531,7 @@ body:not(.dsn-line-style).nav-bg.hide-nav .site-header {
   }
 }
 .box-seat .pro-text:not(.container) {
-  max-width: 600px;
+  max-width: 900px;
 }
 @media only screen and (max-width: 991px) {
   .box-seat .pro-text:not(.container) {
