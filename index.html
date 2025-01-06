@@ -499,7 +499,7 @@
 			<div id="contentScrollbar" data-scrollbar style="width: 100%; height: 100vh; overflow: auto;">
 
 					<!-- ==========  about  ========== -->                    
-					<section class="about-section p-relative section-margin" id="frc" data-dsn-title="" data-dsn-animate-multi data-dsn-animate="section">
+					<section class="about-section p-relative section-margin" id="about" data-dsn-title="" data-dsn-animate-multi data-dsn-animate="section">
 						<div class="container">
 							<div class="row fill-right-container">
 								<div class="col-lg-6">
@@ -560,7 +560,7 @@
 					<!-- ========== End about ========== --> 
 					
 					 <!-- ==========  Concept  ========== -->
-                    <div class="box-seat box-seat-parallax">
+                    <div class="box-seat box-seat-parallax"  id="concept">
 
                         <div class="inner-img h-100-v" data-dsn-grid="move-up" data-overlay="2">
                             <img class="transform-3d has-bigger-scale" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
@@ -630,7 +630,7 @@
 					
 					
                     <!-- ========== Collections Section ========== -->
-                    <section class="testimonials testimonials-personal section-margin mb-100" data-dsn-title="Testimonial">
+                    <section class="testimonials testimonials-personal section-margin mb-100"  id="collections"  data-dsn-title="Testimonial">
                         <div class="container d-flex text-right flex-column align-items-center mb-70">
                             <div class="">
 								<p class="sub-heading line-shap line-shap-before mb-15 dsn-up">
@@ -770,7 +770,7 @@
 					
 					
 					<!-- ========== News Section ========== -->
-                    <section class="our-blog uevents section-margin p-relative dsn-swiper" data-dsn-animate="section"
+                    <section class="our-blog uevents section-margin p-relative dsn-swiper"  id="news" data-dsn-animate="section"
                         data-dsn-option='{"slidesPerView":1.5  }' data-dsn-title="Lasts post">
                         <div class="container mb-70 d-flex text-center flex-column align-items-center">
                             <p class="sub-heading line-shap line-shap-before mb-15 dsn-up">
@@ -1040,7 +1040,7 @@
 					
 					
 					 <!-- ========== Golf Membership Section ========== -->
-                    <div class="box-gallery-vertical box-gallery-content section-margin " data-dsn-animate="section"
+                    <div class="box-gallery-vertical box-gallery-content section-margin"  id="membership" data-dsn-animate="section"
                         data-dsn-duration="100%" data-dsn="color">
                         <div class="container">
                             <div class="row dsn-z-index-2">
@@ -1083,7 +1083,7 @@
                     <!-- ========== End Golf Membership ========== -->					
 					
 					 <!-- ========== Contact Section ========== -->				
-				<div class="box-gallery-vertical box-gallery-content section-margin " data-dsn-duration="100%" data-dsn="color">
+				<div class="box-gallery-vertical box-gallery-content section-margin" id="contact" data-dsn-duration="100%" data-dsn="color">
 					<div class="container">
 						<div class="row dsn-z-index-2">
 							<div class="col-lg-6 box-content pr-0">
@@ -1290,14 +1290,14 @@
 										<div class="icon-circle"></div>
 									</a>
 									<ul class="dropdown">
-										<li><a href="membership-golfshire/index.html" data-dsn="parallax">MGC Membership</a></li>
+										<li><a href="#membership" data-dsn="parallax">MGC Membership</a></li>
 									</ul>
 								</li>
-								<li><a href="" data-dsn="parallax">Concept</a></li>
-								<li><a href="" data-dsn="parallax">Collections</a></li>
-								<li><a href="" data-dsn="parallax">News</a></li>
-								<li><a href="" data-dsn="parallax">About us</a></li>
-								<li><a href="" data-dsn="parallax">Contact</a></li>
+								<li><a href="#concept" data-dsn="parallax">Concept</a></li>
+								<li><a href="#collections" data-dsn="parallax">Collections</a></li>
+								<li><a href="#news" data-dsn="parallax">News</a></li>
+								<li><a href="#about" data-dsn="parallax">About us</a></li>
+								<li><a href="#contact" data-dsn="parallax">Contact</a></li>
 							</ul>
 						</div>
 					</div>
@@ -1563,20 +1563,17 @@
 		
 	</script>	
 
-    <script>
-        const items = document.querySelectorAll('.item');
-        let lastOpen = 0;
-
-        items.forEach((el, i) => {
-            el.addEventListener('click', (e) => {
-                if (lastOpen !== i) {
-                    items[lastOpen].classList.remove('open');
-                }
-                el.classList.toggle('open');
-                lastOpen = i;
-            });
-        });
-    </script>
+	<script>
+		// Smooth scrolling for anchor links
+		document.querySelectorAll('.nav-menu a').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+			const target = document.querySelector(this.getAttribute('href'));
+			target.scrollIntoView({ behavior: 'smooth' });
+		});
+		});
+	</script>
+  
 	
 	
 	
