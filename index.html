@@ -1461,85 +1461,103 @@
 	
 	<script src="assets/js/smooth-scrollbar.js"></script>
 	<script src="assets/js/jquery.waypoints.js"></script>
-	
+
 	<script>
-		$(document).on('ready', function(e) {
-		
-			$(".scroller").hide();
-			$(".scroller.scrolle1").fadeIn(300);
-			
-			var slider = $('.regular').slick({
-				dots: false,
-				arrows: false,
-				infinite: true,
-				slidesToShow: 2,
-				slidesToScroll: 1,
-				responsive: [ {
-						breakpoint: 1024,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 1,
-						}
-					}, {
-						breakpoint: 768,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 1
-						}
-					}, {
-						breakpoint: 479,
-						settings: {
-							slidesToShow: 2,
-							slidesToScroll: 1
-						}
-					}
-				]
-			});	
-			
-			slider.slick("slickSetOption", "accessibility", false, false);
-			slider.slick("slickSetOption", "draggable", false, false);
-			slider.slick("slickSetOption", "swipe", false, false);
-			slider.slick("slickSetOption", "touchMove", false, false);
-			
-		});
-	</script>
-	
-	<script>
-		new fullpage('#fullpage', {
-            easing: 'easeInOutCubic',
-            easingcss3: 'ease',
-			onLeave: function(origin, destination, direction) {
-				$('.regular').slick('slickGoTo', destination.index);
-				
-				if(direction = "down" && destination.index == 3) {
-					$('.slick-slide').fadeOut(300);
-					$('.site-header').fadeOut(300);
-				}
-				
-			},
-			afterLoad: function(origin, destination, direction){
-			
-				$(".scroller.scrolle"+(destination.index + 1)).fadeIn(300);
-				$(".scroller.scrolle"+(destination.index)).hide();
-				$(".sec"+(destination.index + 1)).addClass('shrink');
-				$(".sec"+(destination.index)).removeClass('shrink');
-				
-				
-				if(direction = "up" && destination.index == 2) {
-					$('.slick-slide').fadeIn(300);
-					$('.site-header').fadeIn(300);
-					fullpage_api.setAllowScrolling(true);
-				}
-				
-				
-			}
-			
-		});
-		
-		$(document).on('click', '.scroller', function(){
-			fullpage_api.moveSectionDown();
-		});
-		
+		// Initialize fullpage
+new fullpage('#fullpage', {
+    easing: 'easeInOutCubic',
+    easingcss3: 'ease',
+    onLeave: function(origin, destination, direction) {
+        $('.regular').slick('slickGoTo', destination.index);
+        
+        if(direction = "down" && destination.index == 3) {
+            $('.slick-slide').fadeOut(300);
+            $('.site-header').fadeOut(300);
+        }
+    },
+    afterLoad: function(origin, destination, direction) {
+        $(".scroller.scrolle"+(destination.index + 1)).fadeIn(300);
+        $(".scroller.scrolle"+(destination.index)).hide();
+        $(".sec"+(destination.index + 1)).addClass('shrink');
+        $(".sec"+(destination.index)).removeClass('shrink');
+        
+        if(direction = "up" && destination.index == 2) {
+            $('.slick-slide').fadeIn(300);
+            $('.site-header').fadeIn(300);
+            fullpage_api.setAllowScrolling(true);
+        }
+    }
+});
+
+// Handle menu clicks
+document.querySelectorAll('.nav-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (href.startsWith('#')) {
+            const targetSection = document.querySelector(href);
+            if (targetSection) {
+                const container = document.querySelector('#contentScrollbar');
+                if (container) {
+                    fullpage_api.moveTo(4); // Move to section 4 first
+                    setTimeout(() => {
+                        container.scrollTo({
+                            top: targetSection.offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }, 700); // Wait for fullpage transition
+                }
+            }
+        }
+    });
+});
+
+// Initialize slick slider
+$(document).on('ready', function(e) {
+    $(".scroller").hide();
+    $(".scroller.scrolle1").fadeIn(300);
+    
+    var slider = $('.regular').slick({
+        dots: false,
+        arrows: false,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 479,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+    
+    slider.slick("slickSetOption", "accessibility", false, false);
+    slider.slick("slickSetOption", "draggable", false, false);
+    slider.slick("slickSetOption", "swipe", false, false);
+    slider.slick("slickSetOption", "touchMove", false, false);
+});
+
+// Handle scroll button clicks
+$(document).on('click', '.scroller', function() {
+    fullpage_api.moveSectionDown();
+});
 	</script>
 	
 	
@@ -1564,14 +1582,17 @@
 	</script>	
 
 	<script>
-		// Smooth scrolling for anchor links
-		document.querySelectorAll('.nav-menu a').forEach(anchor => {
-		anchor.addEventListener('click', function (e) {
-			e.preventDefault();
-			const target = document.querySelector(this.getAttribute('href'));
-			target.scrollIntoView({ behavior: 'smooth' });
-		});
-		});
+			const items = document.querySelectorAll('.item');
+		lastOpen = 0;
+		items.forEach((el, i) => {
+		el.addEventListener('click', (e) => {
+			if (lastOpen != i) {
+			items[lastOpen].classList.remove('open');
+			}
+			el.classList.toggle('open');
+			lastOpen = i;
+		})
+		})
 	</script>
   
 	
