@@ -1068,7 +1068,26 @@
 												</p>
 											<p class="mb-10">
 											<a href="" target="_new"><span class="__cf_email__" >mastergolfclulb@gmail.com</span></a>
-											</p>
+											</p>											
+
+											<a href="membership/index.html" class="mt-30 dsn-button image-zoom" data-dsn="parallax">
+												<span class="dsn-border border-color-reverse-color"></span>
+												Get in touch <span>⟶</span>
+											</a>											
+											
+                                            <a href="javascript:void()" id="myModalomember" style="margin: 30px auto 30px;" class=" link-vist p-relative mt-20 text-center">
+
+                                                <span class="link-vist-text">Interested</span>
+
+                                                <div class="link-vist-arrow">
+                                                    <svg viewBox="0 0 80 80">
+                                                        <polyline points="19.89 15.25 64.03 15.25 64.03 59.33">
+                                                        </polyline>
+                                                        <line x1="64.03" y1="15.25" x2="14.03" y2="65.18">
+                                                        </line>
+                                                    </svg>
+                                                </div>
+                                            </a>
 
 											<div class="border-bottom mt-30 mb-30"></div>
 
@@ -1104,7 +1123,7 @@
 								<div class="col-lg-6  dsn-z-index-2 pl-0">
 									<iframe 
 										src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158858.47340002653!2d-0.24168120642536509!3d51.52855824164916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C%20UK!5e0!3m2!1sen!2s!4v1629696377526!5m2!1sen!2s"
-										width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy">
+										width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy">
 									</iframe>
 								</div>
 
@@ -1615,6 +1634,154 @@
 		})
 		})
 	</script>
+			
+			<script>
+											$(document).ready(function() {
+												new jBox('Modal', {
+												  attach: '#myModalomember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												new jBox('Modal', {
+												  attach: '#myModaltmember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												new jBox('Modal', {
+												  attach: '#myModalfmember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												new jBox('Modal', {
+												  attach: '#myModalwmember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												
+												new jBox('Modal', {
+												  attach: '#myModaljmember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												new jBox('Modal', {
+												  attach: '#myModalscmember',
+												  content: $('#grabMe'),
+												  closeOnClick: false,
+												  closeOnEsc: false
+												});
+												
+												
+												
+											});
+										</script>
+										
+										<div style="display: none" id="grabMe">
+								
+											<div class="loader-sd">
+												<img src="../assets/img/loader.gif" alt="loader" style="max-width: 80px;">
+												<p>Loading! Please wait!!</p>
+											</div>
+											
+											<div class="mheader">
+												<div class="mb-10 mt-20 d-flex text-center flex-column align-items-center">
+													<p class="sub-heading line-shap line-shap-before mb-15">
+														<span class="line-bg-right">Membership Enquiry</span>
+													</p>
+												</div>
+											</div>
+											
+											<div class="mcontent">
+												
+												<form id="regform" name="regform" class="form" method="post">
+												
+												<div class="messages"></div>
+													<div class="input__wrap controls">
+													
+														<div class="form-wrap">
+														
+															<div class="form-group pb-15 mb-10 mr-5">
+																<div class="entry-box">
+																	<!-- <label>Your name *</label> -->
+																	<input type="text" name="first_name" id="first_name"
+																		placeholder="First name" required="required"
+																		data-error="name is required.">
+																</div>
+																<label class="error"></label>
+															</div>
+														
+															<div class="form-group pb-15 mb-10 ml-5">
+																<div class="entry-box">
+																	<!-- <label>Your name *</label> -->
+																	<input type="text" name="last_name" id="last_name"
+																		placeholder="Last name" required="required"
+																		data-error="name is required.">
+																</div>
+																<label class="error"></label>
+															</div>
+															
+														</div>
+													
+														<div class="form-wrap">
+													
+															<div class="form-wrap">
+														
+																<div class="form-group pb-15 mb-10 mr-5">
+																	<div class="entry-box">
+																		<!-- <label>Your name *</label> -->
+																		<input type="tel" name="amobile" id="amobile"
+																			placeholder="Mobile No" required="required"
+																			data-error="name is required.">
+																			
+																		<input type="hidden" name="acountrycode" id="acountrycode">
+																		<input type="hidden" name="adialcode" id="adialcode">
+																		<input type="hidden" name="aisocode" id="aisocode">
+																	</div>
+																	<label class="error"></label>
+																</div>
+
+																<div class="form-group pb-15 mb-10 ml-5">
+																	<div class="entry-box">
+																		<!-- <label>Your E-Mail *</label> -->
+																		<input type="email" name="email" id="email"
+																			placeholder="Email ID" required="required"
+																			data-error="Valid email is required.">
+																	</div>
+																	<label class="error"></label>
+																</div>
+															
+															</div>
+															
+														
+															
+														</div>
+
+														<div class="text-center mt-10 mb-30">
+															
+															<button type="submit" class="dsn-button" style="cursor:pointer;">
+																<span class="dsn-border border-color-default"></span>
+																<span class="text-button">Submit</span>
+
+															</button>
+															
+														</div>
+														
+													</div>
+												</form>
+											</div>
+											
+											
+										
+										</div>
   
 	
 	
