@@ -1462,6 +1462,7 @@
 	<script src="assets/js/smooth-scrollbar.js"></script>
 	<script src="assets/js/jquery.waypoints.js"></script>
 
+	
 	<script>
 		// Initialize fullpage
 new fullpage('#fullpage', {
@@ -1489,31 +1490,23 @@ new fullpage('#fullpage', {
     }
 });
 
-// Handle menu clicks
-document.querySelectorAll('.nav-menu a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const href = this.getAttribute('href');
-        if (href.startsWith('#')) {
-            const targetSection = document.querySelector(href);
-            if (targetSection) {
-                const container = document.querySelector('#contentScrollbar');
-                if (container) {
-                    fullpage_api.moveTo(4); // Move to section 4 first
-                    setTimeout(() => {
-                        container.scrollTo({
-                            top: targetSection.offsetTop,
-                            behavior: 'smooth'
-                        });
-                    }, 700); // Wait for fullpage transition
-                }
-            }
-        }
-    });
+// Initialize Smooth Scrollbar
+const scrollbar = Scrollbar.init(document.querySelector("#contentScrollbar"), {
+    damping: 0.2,
+});
+
+scrollbar.track.xAxis.element.remove();
+
+scrollbar.addListener(({ offset }) => {
+    if(offset.y > 0) {
+        fullpage_api.setAllowScrolling(false);
+    } else {
+        fullpage_api.setAllowScrolling(true);
+    }
 });
 
 // Initialize slick slider
-$(document).on('ready', function(e) {
+$(document).ready(function() {
     $(".scroller").hide();
     $(".scroller.scrolle1").fadeIn(300);
     
@@ -1558,27 +1551,56 @@ $(document).on('ready', function(e) {
 $(document).on('click', '.scroller', function() {
     fullpage_api.moveSectionDown();
 });
-	</script>
-	
-	
-	<script> 
-		//var Scrollbar = window.Scrollbar;
-		
-		const scrollbar = Scrollbar.init(document.querySelector("#contentScrollbar"), {
-			damping: 0.2,
-		});
-		
-		scrollbar.track.xAxis.element.remove();
-		
-		scrollbar.addListener(({ offset }) => {
-		  console.log(offset.y);
-			if(offset.y > 0) {
-				fullpage_api.setAllowScrolling(false);
-			} else {
-				fullpage_api.setAllowScrolling(true);
-			}
-		}); 
-		
+
+// Menu navigation system
+document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.nav-menu a[data-dsn="parallax"]');
+    
+    const sectionMap = {
+        'About us': '#frc',
+        'Concept': '.box-seat',
+        'Collections': '.testimonials',
+        'News': '.our-blog',
+        'Contact': '.box-gallery-vertical'
+    };
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            fullpage_api.moveTo(4);
+            
+            const targetSelector = sectionMap[item.textContent.trim()];
+            
+            if (targetSelector) {
+                setTimeout(() => {
+                    const targetSection = document.querySelector(targetSelector);
+                    if (targetSection) {
+                        scrollbar.scrollIntoView(targetSection, {
+                            offsetTop: 0,
+                            onlyScrollIfNeeded: false
+                        });
+                    }
+                }, 700);
+            }
+        });
+    });
+
+    // Golf membership handling
+    const membershipLink = document.querySelector('.nav-menu a[href="membership-golfshire/index.html"]');
+    if (membershipLink) {
+        membershipLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            fullpage_api.moveTo(4);
+            
+            setTimeout(() => {
+                const targetSection = document.querySelector('.box-gallery-vertical');
+                if (targetSection) {
+                    scrollbar.scrollIntoView(targetSection);
+                }
+            }, 700);
+        });
+    }
+});
 	</script>	
 
 	<script>
