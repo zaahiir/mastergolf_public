@@ -7320,82 +7320,6 @@ h4.title-block { font-size: 18px;}
 	
 }
 
-@media (min-width: 1761px) and (max-width: 1920px) {
-	
-/* .slider {
-    width: 56% !important;
-}
-
-.text-menu.btea-time {
-    width: 330px !important;
-	top: 10px ​!important
-}
-
-.text-menu.btea-time .dsn-button {
-    padding: 22px 34px 20px !important;
-    font-size: 21px !important;
-    text-transform: uppercase;
-    letter-spacing: 2px !important;
-    color: #fff !important;
-	font-weight: 600 !important
-}
-
-.slide-container .title {
-    line-height: 4vw !important;
-    margin-bottom: 40px !important;
-    font-size: 3.6vw !important;
-}
-
-.slide-container {
-    max-width: 70vw !important;
-}
-
-.slide-container .dsn-button {
-    position: relative;
-    padding: 21px 35px !important;
-    margin-right: 15px !important;
-	font-size: 22px !important;
-}
-
-.sub-heading {
-	margin-bottom: 38px !important;
-}
-
-.slide-container {
-    padding-left: 80px !important;
-	padding-top: 0px !important;
-    margin-top: -80px !important;;
-}
-
-.nav-menu ul li a {
-	font-size: 21px;
-}
-
-.sub-heading {
-    letter-spacing: 3px;
-    font-size: 22px;
-}
-
-.actions {
-    bottom: 80px !important;
-}
-
-.scroll-down2 {
-    width: 45px !important;
-	height: 65px !important;
-}
-
-.regular .slick-slide {
-    height: 38vh !important;
-}
-
-.slick-slide h4 {
-    font-size: 24px !important;
-    line-height: 48px !important;
-}
-	 */
-}
-
 @media (min-width: 1201px) {
 	.menu-icon.mob { display: none; }
 }
@@ -7702,10 +7626,6 @@ footer p, .footer .column-right h5 {
 
 .blog-item .box-meta {
     font-size: 1vw !important;
-} 
-
-.testimonials .sm-title-block {
-	
 }
 
 .link-vist .link-vist-text {
@@ -7726,10 +7646,6 @@ footer p, .footer .column-right h5 {
 .sm-title-block-new{
 	font-size: 16px;
 }
-
-/* 
-
-*/
 
 
 .testimonials .testimonial-nav .swiper-slide .box-img img {
@@ -7812,7 +7728,7 @@ margin-bottom: 15px;
 }
 
 .dsn-button, .nav-menu-inner, a { text-decoration: none !important;    
-}}
+}
 
 .nav-menu-inner > ul > li.has-dropdown {
     padding-right: 30px;
