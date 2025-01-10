@@ -1,5 +1,8 @@
 ---
-    deployment:
-      tasks:
-        - export DEPLOYPATH=/home/lajix/public_html/testmgcpublic.lajix.com/
-        - /bin/cp -R * $DEPLOYPATH
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/lajix/public_html/testmgcpublic.lajix.com/
+    - /bin/cp -R assets $DEPLOYPATH
+    - /bin/cp -R membership $DEPLOYPATH
+    - /bin/cp -R news $DEPLOYPATH
+    - /bin/cp index.html $DEPLOYPATH
