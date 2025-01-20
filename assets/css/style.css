@@ -274,6 +274,15 @@ body, .main-root {
   margin-right: 15px;
 }
 
+.inner-img{
+  height: 1200px;
+  object-fit: cover;
+}
+
+.concept{
+  color: var(--heading-color);
+}
+
 .corner {
   position: absolute;
   width: 15px;
