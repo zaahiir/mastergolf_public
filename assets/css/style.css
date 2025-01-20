@@ -279,10 +279,6 @@ body, .main-root {
   object-fit: cover;
 }
 
-.concept{
-  color: var(--heading-color);
-}
-
 .corner {
   position: absolute;
   width: 15px;
