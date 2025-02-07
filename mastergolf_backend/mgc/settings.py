@@ -3,7 +3,11 @@ from datetime import timedelta
 import os
 from django.core.management.utils import get_random_secret_key
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print("BASE_DIR:", BASE_DIR)
+print("Templates directory exists:", os.path.exists(os.path.join(BASE_DIR, 'templates')))
+print("Index.html exists:", os.path.exists(os.path.join(BASE_DIR, 'templates', 'index.html')))
+print("Static directory exists:", os.path.exists(os.path.join(BASE_DIR, 'static')))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-$8(gz)-bl7c23oy%br2vj%z*@tn752amdlp^o-pla&ze49-f8y')
@@ -11,7 +15,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-$8(gz)-bl7c23oy%br2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
@@ -35,6 +39,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'mgc.middleware.DebugMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -50,7 +55,7 @@ ROOT_URLCONF = 'mgc.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -68,7 +74,7 @@ WSGI_APPLICATION = 'mgc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -133,7 +139,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -144,3 +154,10 @@ MIME_TYPES = {
     'mp4': 'video/mp4',
     'pdf': 'application/pdf',
 }
+
+
+# At the bottom of settings.py
+print("Django Settings Loading")
+print("INSTALLED_APPS:", INSTALLED_APPS)
+print("MIDDLEWARE:", MIDDLEWARE)
+print("ROOT_URLCONF:", ROOT_URLCONF)

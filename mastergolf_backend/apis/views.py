@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.exceptions import TokenError
 from rest_framework.exceptions import ValidationError
+from django.shortcuts import render
 from .serializers import *
 from django.db.models import Q
 from .utils import PasswordManager
@@ -657,3 +658,15 @@ class BlogViewSet(viewsets.ModelViewSet):
         BlogModel.objects.filter(id=pk).update(hideStatus=1)
         response = {'code': 1, 'message': "Done Successfully"}
         return Response(response)
+
+
+def collections_view(request):
+    courses = CourseModel.objects.filter(hideStatus=0)
+    print("Number of courses:", courses.count())  # Debug print
+    for course in courses:
+        print(f"Course: {course.courseName}, Image: {course.courseImage}")  # Debug print
+
+    context = {
+        'courses': courses,
+    }
+    return render(request, 'index.html', context)

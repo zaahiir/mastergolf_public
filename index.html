@@ -591,144 +591,102 @@ Our concept is built around exclusivity and convenience: a members-only golf res
                     <!-- ========== End Concept ========== -->
 					
 					
+					{% load static %}
                     <!-- ========== Collections Section ========== -->
-                    <section class="testimonials testimonials-personal section-margin mb-100"  id="collections"  data-dsn-title="Testimonial">
-                        <div class="container d-flex text-right flex-column align-items-center mb-70">
-                            <div class="">
+					<section class="testimonials testimonials-personal section-margin mb-100" id="collections" data-dsn-title="Testimonial">
+						<div class="container d-flex text-right flex-column align-items-center mb-70">
+							<div class="">
 								<p class="sub-heading line-shap line-shap-before mb-15 dsn-up">
 									<span class="line-bg-right">
-									   Collections
+										Collections
 									</span>
 								</p>
 							</div>
-                        </div>
+						</div>
 						
-                        <div class="container">
-                            <div class="testimonials-box box-padding p-relative w-100">
-                                <div class="corner corner-left-top"></div>
-                                <div class="corner corner-left-bottom"></div>
-                                <div class="corner corner-right-top"></div>
-                                <div class="corner corner-right-bottom"></div>
+						<div class="container">
+							<div class="testimonials-box box-padding p-relative w-100">
+								<div class="corner corner-left-top"></div>
+								<div class="corner corner-left-bottom"></div>
+								<div class="corner corner-right-top"></div>
+								<div class="corner corner-right-bottom"></div>
 
-                                <div class="testimonials-inner p-relative w-100 dsn-swiper"
-                                    data-dsn-controller=".testimonial-content"
-                                    data-dsn-option='{"slidesPerView":3,"spaceBetween":50 }'>
+								<div class="testimonials-inner p-relative w-100 dsn-swiper"
+									data-dsn-controller=".testimonial-content"
+									data-dsn-option='{"slidesPerView":3,"spaceBetween":50 }'>
 
-                                    <div class="testimonial-nav text-center">
-                                        <div class="testimonial-nav-inner">
-                                            <div class="swiper-container">
-                                                <div class="swiper-wrapper">
-                                                    <div class="swiper-slide">
-                                                        <div class="box-img mb-15" data-swiper-parallax-scale="0.7">
-                                                            <img src="assets/img/collections/1.jpg" alt="">
-                                                        </div>
-                                                        <div class="box-text" data-swiper-parallax="30%"
-                                                            data-swiper-parallax-opacity="0">
-                                                            <h4 class="title-block mb-10">Aldenham – Church Course</h4>
-                                                            
-                                                        </div>
-                                                    </div>
+									<div class="testimonial-nav text-center">
+										<div class="testimonial-nav-inner">
+											<div class="swiper-container">
+												<div class="swiper-wrapper">
+													{% for course in courses %}
+													<div class="swiper-slide">
+														<div class="box-img mb-15" data-swiper-parallax-scale="0.7">
+															{% if course.courseImage %}
+																<img src="{{ course.courseImage.url }}" alt="{{ course.courseName }}">
+															{% endif %}
+														</div>
+														<div class="box-text" data-swiper-parallax="30%"
+															data-swiper-parallax-opacity="0">
+															<h4 class="title-block mb-10">{{ course.courseName }}</h4>
+														</div>
+													</div>
+													{% endfor %}
+												</div>
+											</div>
+										</div>
+									</div>
 
-                                                    <div class="swiper-slide">
-                                                        <div class="box-img mb-15" data-swiper-parallax-scale="0.7">
-                                                        <img src="assets/img/collections/2.jpg" alt="">
-                                                        </div>
-                                                        <div class="box-text" data-swiper-parallax="30%"
-                                                            data-swiper-parallax-opacity="0">
-                                                            <h4 class="title-block mb-10">Betchworth Park Weekdays</h4>
-                                                           </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide">
-                                                        <div class="box-img mb-15" data-swiper-parallax-scale="0.7">
-                                                            <img src="assets/img/collections/3.jpg" alt="">
-                                                        </div>
-                                                        <div class="box-text" data-swiper-parallax="30%"
-                                                            data-swiper-parallax-opacity="0">
-                                                            <h4 class="title-block mb-10">Breadsall Priory Country Club</h4>
-                                                            
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="swiper-slide">
-                                                        <div class="box-img mb-15" data-swiper-parallax-scale="0.7">
-                                                            <img src="assets/img/collections/4.jpg" alt="">
-                                                       </div>
-                                                        <div class="box-text" data-swiper-parallax="30%"
-                                                            data-swiper-parallax-opacity="0">
-                                                            <h4 class="title-block mb-10">Chipstead Golf Club</h4>
-                                                           
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-content text-center">
-                                        <div class="swiper-container">
-                                            <div class="swiper-wrapper">
-                                                <div class="swiper-slide">
+									<div class="testimonial-content text-center">
+										<div class="swiper-container">
+											<div class="swiper-wrapper">
+												{% for course in courses %}
+												<div class="swiper-slide">
 													<p class="p-larg" data-swiper-parallax="90%"
-                                                        data-swiper-parallax-opacity="0">"I Believe its one of the best courses in the country today & playing here is amazing as always, it calls you back!"</p>
-                                               
-											   </div>
+														data-swiper-parallax-opacity="0">
+														"{{ course.golfDescription|default:'No description available' }}"
+													</p>
+												</div>
+												{% endfor %}
+											</div>
 
-                                                <div class="swiper-slide">
-                                                    <p class="p-larg" data-swiper-parallax="90%"
-                                                        data-swiper-parallax-opacity="0">"It's a nice environment to come out to the countryside and we have the Nandi Hills & fresh air & everything, i really enjoy it here"</p>
-                                                </div>
-
-                                                <div class="swiper-slide">
-                                                    <p class="p-larg" data-swiper-parallax="90%"
-                                                        data-swiper-parallax-opacity="0">"We really enjoyed this morning (Master master series - May leg), great friendship, great fun, i cant say that i had a great game but i still enjoyed it""</p>
-                                                </div>
-
-                                                <div class="swiper-slide">
-                                                    <p class="p-larg" data-swiper-parallax="90%"
-                                                        data-swiper-parallax-opacity="0">"After your hectic schedule, i think one place which gives me like immense pleasure is this course, this masters we have it like a huge prize money, i think no wonder all the golfers are like focused"
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div
-                                                class="dsn-pagination mt-30 dsn-container d-flex justify-content-between">
-                                                <div class="swiper-next">
-                                                    <div class="next-container">
-                                                        <div class="container-inner">
-                                                            <div class="triangle"></div>
-                                                            <svg class="circle" xmlns="http://www.w3.org/2000/svg"
-                                                                width="24" height="24" viewBox="0 0 24 24">
-                                                                <g class="circle-wrap" fill="none" stroke-width="1"
-                                                                    stroke-linejoin="round" stroke-miterlimit="10">
-                                                                    <circle cx="12" cy="12" r="10.5"></circle>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="swiper-prev">
-                                                    <div class="prev-container">
-                                                        <div class="container-inner">
-                                                            <div class="triangle"></div>
-                                                            <svg class="circle" xmlns="http://www.w3.org/2000/svg"
-                                                                viewBox="0 0 24 24">
-                                                                <g class="circle-wrap" fill="none" stroke-width="1"
-                                                                    stroke-linejoin="round" stroke-miterlimit="10">
-                                                                    <circle cx="12" cy="12" r="10.5"></circle>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <!-- ========== End Collections Section ========== -->
+											<div class="dsn-pagination mt-30 dsn-container d-flex justify-content-between">
+												<div class="swiper-next">
+													<div class="next-container">
+														<div class="container-inner">
+															<div class="triangle"></div>
+															<svg class="circle" xmlns="http://www.w3.org/2000/svg"
+																width="24" height="24" viewBox="0 0 24 24">
+																<g class="circle-wrap" fill="none" stroke-width="1"
+																	stroke-linejoin="round" stroke-miterlimit="10">
+																	<circle cx="12" cy="12" r="10.5"></circle>
+																</g>
+															</svg>
+														</div>
+													</div>
+												</div>
+												<div class="swiper-prev">
+													<div class="prev-container">
+														<div class="container-inner">
+															<div class="triangle"></div>
+															<svg class="circle" xmlns="http://www.w3.org/2000/svg"
+																viewBox="0 0 24 24">
+																<g class="circle-wrap" fill="none" stroke-width="1"
+																	stroke-linejoin="round" stroke-miterlimit="10">
+																	<circle cx="12" cy="12" r="10.5"></circle>
+																</g>
+															</svg>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- ========== End Collections Section ========== -->
 					
 					
 					<!-- ========== News Section ========== -->
